@@ -25,5 +25,17 @@ namespace BandTracker
       //Assert
       Assert.Equal(0, result);
     }
+    [Fact] public void Band_SavesToDatabase()
+    {
+      //Arrange
+      Band newBand = new Band("The Sensational Seven");
+      List<Band> expectedResult = new List<Band>{newBand};
+      //Act
+      newBand.Save();
+      List<Band> result = Band.GetAll();
+      //Assert
+      Assert.Equal(expectedResult, result);
+
+    }
   }
 }
