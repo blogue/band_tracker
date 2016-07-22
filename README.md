@@ -6,7 +6,7 @@
 
 ## Description
 
-Band tracker web app allows a user to create, edit, and delete venues as well as add bands to a venue.
+This application allows a user to create, edit, and delete venues as well as add bands to a venue and add venues to a band.
 
 ## Technologies Used
 
@@ -19,7 +19,7 @@ Band tracker web app allows a user to create, edit, and delete venues as well as
 
 * Clone the repository
 * In PowerShell, navigate to the project directory
-* In PowerShell type sqlcmd -S "(localdb)\mssqllocaldb" -i C:\[YOURFILEPATH]\band_tracker\band_tracker.sql
+* In PowerShell type sqlcmd -S "(localdb)\mssqllocaldb" -i C:\ [YOURFILEPATH]\band_tracker\band_tracker.sql
 * In PowerShell, enter '>dnu restore' and then '>dnx kestrel'.
 * Navigate your web browser to http://localhost:5004
 
