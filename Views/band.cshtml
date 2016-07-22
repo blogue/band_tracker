@@ -2,15 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>@Model.GetName()</title>
+    <title>@Model["band"].GetName()</title>
   </head>
   <body>
-    <h1>@Model.GetName()</h1>
-      <h3>Venues played by band: </h3>
-      @foreach(var venue in Model.GetVenues())
+    <h1>@Model["band"].GetName()</h1>
+      <h2>Venues played by band: </h2>
+      @foreach(var venue in Model["band"].GetVenues())
       {
         <li><a href="/venues/@venue.GetId()">@venue.GetName()</a></li>
       }
+      <h3>Add Venue</h3>
+      <form action='/bands/@Model["band"].GetId()' method="post">
+        <label>Venue:</label>
+        <select name="venue">
+          @foreach(var venue in Model["venues"])
+          {
+            <option value="@venue.GetId()">@venue.GetName()</option>
+          }
+        </select>
+        <button type="submit" name="button">Add Venue</button>
+      </form>
       <a href="/">Home</a>
       <a href="/venues">View Venues</a>
       <a href="/bands">View Bands</a>
