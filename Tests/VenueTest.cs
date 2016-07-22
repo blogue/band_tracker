@@ -63,19 +63,32 @@ namespace BandTracker
       Assert.Equal(expectedResult, result);
     }
     [Fact]
-   public void Venue_Delete_DeletesInstanceOfVenue()
-   {
-     Venue firstVenue = new Venue("The Rainbow Room");
-     firstVenue.Save();
-     Venue secondVenue = new Venue("Madison Square Garden");
-     secondVenue.Save();
+     public void Venue_Delete_DeletesInstanceOfVenue()
+     {
+       Venue firstVenue = new Venue("The Rainbow Room");
+       firstVenue.Save();
+       Venue secondVenue = new Venue("Madison Square Garden");
+       secondVenue.Save();
 
-     firstVenue.Delete();
+       firstVenue.Delete();
 
-     List<Venue> expectedResult = new List<Venue>{secondVenue};
-     List<Venue> actualResult = Venue.GetAll();
-     Assert.Equal(expectedResult, actualResult);
-   }
-
+       List<Venue> expectedResult = new List<Venue>{secondVenue};
+       List<Venue> actualResult = Venue.GetAll();
+       Assert.Equal(expectedResult, actualResult);
+     }
+    [Fact]
+    public void Venue_Update_UpdatesVenue()
+    {
+      //Arrange
+      Venue firstVenue = new Venue("The Rainbow Room");
+      firstVenue.Save();
+      //Act
+      firstVenue.Update("Madison Square Garden");
+      Venue resultVenue = Venue.Find(firstVenue.GetId());
+      string result = resultVenue.GetName();
+      string expectedResult = "Madison Square Garden";
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
