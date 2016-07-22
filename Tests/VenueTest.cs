@@ -16,6 +16,7 @@ namespace BandTracker
     public void Dispose()
     {
       Venue.DeleteAll();
+      Band.DeleteAll();
     }
     [Fact]
     public void Venue_DatabaseEmpty()
@@ -87,6 +88,26 @@ namespace BandTracker
       Venue resultVenue = Venue.Find(firstVenue.GetId());
       string result = resultVenue.GetName();
       string expectedResult = "Madison Square Garden";
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
+    [Fact]
+    public void Venue_AddBandToVenue()
+    {
+      //Arrange
+      Venue testVenue = new Venue("The Rainbow Room");
+      testVenue.Save();
+      Band firstBand = new Band("The Beatles");
+      firstBand.Save();
+      Band secondBand = new Band("The Who");
+      secondBand.Save();
+      Band thirdBand = new Band("Miley Cyrus");
+      thirdBand.Save();
+      //Act
+      testVenue.AddBand(firstBand.GetId());
+      testVenue.AddBand(thirdBand.GetId());
+      List<Band> expectedResult = new List<Band>{firstBand, thirdBand};
+      List<Band> result = testVenue.GetBands();
       //Assert
       Assert.Equal(expectedResult, result);
     }
