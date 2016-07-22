@@ -49,5 +49,15 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact] public void Band_FindBandInDatabase()
+    {
+      //Arrange
+      Band expectedResult = new Band("The Sensational Seven");
+      //Act
+      expectedResult.Save();
+      Band result = Band.Find(expectedResult.GetId());
+      //Assert
+      Assert.Equal(expectedResult, result);
+    }
   }
 }
