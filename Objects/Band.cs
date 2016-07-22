@@ -131,5 +131,35 @@ namespace BandTracker
 
       return foundBand;
     }
+    public List<Venue> GetVenues()
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr = null;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT venues.* FROM bands JOIN venues_bands ON (venues_bands.band_id = bands.id) JOIN venues ON (venues_bands.venue_id = venues.id) WHERE band_id = @BandId;", conn);
+
+      SqlParameter bandIdParameter = new SqlParameter();
+      bandIdParameter.ParameterName = "@BandId";
+      bandIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(bandIdParameter);
+
+      rdr = cmd.ExecuteReader();
+
+      List<Venue> foundVenues = new List<Venue>{};
+
+      while(rdr.Read())
+      {
+        int foundVenueId = rdr.GetInt32(0);
+        string foundVenueName = rdr.GetString(1);
+        Venue foundVenue = new Venue(foundVenueName, foundVenueId);
+        foundVenues.Add(foundVenue);
+      }
+
+      if(rdr!=null) rdr.Close();
+      if(conn!=null) conn.Close();
+
+      return foundVenues;
+    }
   }
 }
