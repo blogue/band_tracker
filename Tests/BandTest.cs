@@ -25,7 +25,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(0, result);
     }
-    [Fact] public void Band_SavesToDatabase()
+    [Fact]
+    public void Band_SavesToDatabase()
     {
       //Arrange
       Band newBand = new Band("The Sensational Seven");
@@ -36,7 +37,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
-    [Fact] public void Band_SavesToDatabaseWithId()
+    [Fact]
+    public void Band_SavesToDatabaseWithId()
     {
       //Arrange
       Band newBand = new Band("The Sensational Seven");
@@ -49,7 +51,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
-    [Fact] public void Band_FindBandInDatabase()
+    [Fact]
+    public void Band_FindBandInDatabase()
     {
       //Arrange
       Band expectedResult = new Band("The Sensational Seven");

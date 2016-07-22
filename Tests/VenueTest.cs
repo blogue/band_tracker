@@ -25,7 +25,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(0, result);
     }
-    [Fact] public void Venue_SavesToDatabase()
+    [Fact]
+    public void Venue_SavesToDatabase()
     {
       //Arrange
       Venue newVenue = new Venue("The Rainbow Room");
@@ -36,7 +37,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
-    [Fact] public void Venue_SavesToDatabaseWithId()
+    [Fact]
+    public void Venue_SavesToDatabaseWithId()
     {
       //Arrange
       Venue newVenue = new Venue("The Rainbow Room");
@@ -49,7 +51,8 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
-    [Fact] public void Venue_FindVenueInDatabase()
+    [Fact]
+    public void Venue_FindVenueInDatabase()
     {
       //Arrange
       Venue expectedResult = new Venue("The Rainbow Room");
@@ -59,5 +62,20 @@ namespace BandTracker
       //Assert
       Assert.Equal(expectedResult, result);
     }
+    [Fact]
+   public void Venue_Delete_DeletesInstanceOfVenue()
+   {
+     Venue firstVenue = new Venue("The Rainbow Room");
+     firstVenue.Save();
+     Venue secondVenue = new Venue("Madison Square Garden");
+     secondVenue.Save();
+
+     firstVenue.Delete();
+
+     List<Venue> expectedResult = new List<Venue>{secondVenue};
+     List<Venue> actualResult = Venue.GetAll();
+     Assert.Equal(expectedResult, actualResult);
+   }
+
   }
 }
