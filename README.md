@@ -1,12 +1,12 @@
-# Title - Epicodus C# Project Template
+# Band Tracker
 
-#### Short Description
+#### A web app created as an exercise in using C# and databases.
 
-#### Author(s)
+#### By Ben Logue, current as of 7/22/16
 
 ## Description
 
-A basic project template for C# webapps using Nancy/Razor, XUnit, and MSSQL.
+Band tracker web app allows a user to create, edit, and delete venues as well as add bands to a venue.
 
 ## Technologies Used
 
@@ -15,19 +15,12 @@ A basic project template for C# webapps using Nancy/Razor, XUnit, and MSSQL.
 * XUnit
 * MSSQL
 
-## Instructions for using Template
-
-* Clone the repository
-* Delete the .git directory, then > git init
-* Add your own filenames, database names, and namespaces in HomeModule, Database.cs, TESTNAME.cs, and Startup.cs
-* Fill in your own information in README.md
-
-
 ## Instructions
 
 * Clone the repository
-* In powershell, navigate to the project directory
-* In powershell, enter '>dnu restore' and then '>dnx kestrel'.
+* In PowerShell, navigate to the project directory
+* In PowerShell type sqlcmd -S "(localdb)\mssqllocaldb" -i C:\[YOURFILEPATH]\band_tracker\band_tracker.sql
+* In PowerShell, enter '>dnu restore' and then '>dnx kestrel'.
 * Navigate your web browser to http://localhost:5004
 
 ## Known Bugs
@@ -36,10 +29,10 @@ None
 
 ## Contacts
 
-
+benjamin.logue73@gmail.com
 
 ### License
 
 Licensed under the MIT License.
 
-&copy;
+&copy; Ben Logue 2016
