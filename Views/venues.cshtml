@@ -22,5 +22,10 @@
     <a href="/">Home</a>
     <a href="/venues/add">Add Venue</a>
     <a href="/bands">View Bands</a>
+    <h3>Delete all venues</h3>
+    <form action="/venues/deleted" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" name="button">Delete all</button>
+    </form>
   </body>
 </html>

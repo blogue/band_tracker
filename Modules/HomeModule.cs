@@ -25,6 +25,12 @@ namespace BandTracker.Objects
         List<Venue> allVenues = Venue.GetAll();
         return View["venues.cshtml", allVenues];
       };
+      Delete["/venues/deleted"] = _ =>
+      {
+        Venue.DeleteAll();
+        List<Venue> allVenues = Venue.GetAll();
+        return View["venues.cshtml", allVenues];
+      };
       Get["/venues/{id}"] = parameters =>
       {
         Venue selectedVenue = Venue.Find(parameters.id);
