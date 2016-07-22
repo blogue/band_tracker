@@ -1,7 +1,10 @@
 using Nancy;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using BandTracker.Objects;
 
-namespace BandTracker
+namespace BandTracker.Objects
 {
   public class HomeModule : NancyModule
   {

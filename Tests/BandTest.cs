@@ -4,18 +4,26 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace /*NAMESPACE.OBJECTS*/
+namespace BandTracker
 {
-  public class /*NAME*/ : IDisposable
+  public class BandTrackerTest : IDisposable
   {
-    public ToDoTest()
+    public BandTrackerTest()
     {
-      DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=*****;Integrated Security=SSPI;";
+      DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=band_tracker_test;Integrated Security=SSPI;";
     }
 
     public void Dispose()
     {
-      ****.DeleteAll();
+      Band.DeleteAll();
+    }
+    [Fact]
+    public void Band_DatabaseEmpty()
+    {
+      //Arrange, Act
+      int result = Band.GetAll().Count;
+      //Assert
+      Assert.Equal(0, result);
     }
   }
 }
